@@ -12,11 +12,11 @@ class MyTempApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false, // Elimina la etiqueta de debug
-      title: 'Comarcas de Valencia',
+      title: 'Comarques de Alacant',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: ComarcasValencia(), // Tu pantalla de Comarcas de Valencia como pantalla de inicio
+      home: ComarcasAlacant(),
     );
   }
 }
@@ -24,14 +24,14 @@ class MyTempApp extends StatelessWidget {
 
 
 
-class ComarcasValencia extends StatelessWidget {
+class ComarcasAlacant extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    List<dynamic> comarcasDeValencia = provincies["provincies"][0]["comarques"];
+    List<dynamic> comarcasDeValencia = provincies["provincies"][1]["comarques"];
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Comarques de Valencia"),
+        title: Text("Comarques de Alacant"),
       ),
       body: ListView.builder(
         itemCount: comarcasDeValencia.length,
@@ -46,4 +46,3 @@ class ComarcasValencia extends StatelessWidget {
     );
   }
 }
-
