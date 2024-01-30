@@ -30,8 +30,23 @@ class ComarcasValencia extends StatelessWidget {
     List<dynamic> comarcasDeValencia = provincies["provincies"][0]["comarques"];
 
     return Scaffold(
+      extendBodyBehindAppBar: true, // Extiende el cuerpo detrás del AppBar
       appBar: AppBar(
-        title: Text("Comarques de Valencia"),
+        backgroundColor: Colors.white.withOpacity(0.6), // Fondo blanco con opacidad
+        elevation: 0, // Remueve la sombra del AppBar
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back), // Icono de flecha hacia atrás
+          onPressed: () {
+            Navigator.of(context).pop(); // Regresa a la pantalla anterior
+          },
+        ),
+        title: Text(
+          "Comarques de Valencia",
+          style: TextStyle(
+            fontStyle: FontStyle.italic, // Texto en cursiva
+            fontWeight: FontWeight.bold, // Texto en negrita
+          ),
+        ),
       ),
       body: ListView.builder(
         itemCount: comarcasDeValencia.length,

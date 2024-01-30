@@ -27,6 +27,7 @@ class ComarcaCard extends StatelessWidget {
               fontWeight: FontWeight.bold,
               fontSize: 24,
               color: Colors.white,
+              fontStyle: FontStyle.italic,
               shadows: [
                 Shadow(
                   offset: Offset(1.0, 1.0),
