@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'comarques.dart';
 
 //CODIGO TEMPORAL PARA PROBAR PANTALLA
-void main() {
-  runApp(MyTempApp());
-}
+
 
 class MyTempApp extends StatelessWidget {
   @override
