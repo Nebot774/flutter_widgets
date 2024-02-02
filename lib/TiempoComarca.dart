@@ -1,22 +1,29 @@
 import 'package:flutter/material.dart';
 import 'ComarcaCard.dart';
 import 'comarques.dart';// Importa el archivo comarcas.dart
+import 'InformacionComarca.dart';
+import 'ComarcasValencia.dart';
+import 'ComarcasAlacant.dart';
+import 'ComarquesCastello.dart';
 
 class TiempoComarca extends StatelessWidget {
   final Map<String, dynamic> comarcaData;
+  final String pantallaComarcas;
 
-  TiempoComarca({Key? key, required this.comarcaData}) : super(key: key);
-
+  TiempoComarca({Key? key, required this.comarcaData, required this.pantallaComarcas}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    // Obtiene las dimensiones de la pantalla
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
-
-
     return Scaffold(
       appBar: AppBar(
-        title: Text("Tiempo en la Comarca"),
+        backgroundColor: Colors.white.withOpacity(0.6),
+        elevation: 0,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            // Lógica para regresar a la pantalla de comarcas correspondiente
+          },
+        ),
+        title: Text("Tiempo en ${comarcaData["comarca"]}"),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -42,11 +49,36 @@ class TiempoComarca extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Text("Longitud: ${comarcaData["coordenades"][1]}"),
             ),
-            // Aquí puedes añadir más widgets si es necesario
+            // Otros widgets que quieras incluir...
+          ],
+        ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            IconButton(
+              icon: Icon(Icons.info),
+              onPressed: () {
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                    builder: (context) => InformacionComarca(comarcaData: comarcaData),
+                  ),
+                );
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.cloud),
+              onPressed: () {
+                // Otras acciones para el ícono del tiempo
+              },
+            ),
           ],
         ),
       ),
     );
   }
 }
+
+
 

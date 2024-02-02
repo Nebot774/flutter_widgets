@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:widgets_flutter/TiempoComarca.dart';
 import 'ComarcaCard.dart';
 import 'comarques.dart';// Importa el archivo comarcas.dart
 
@@ -10,21 +11,21 @@ class InformacionComarca extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true, // Extiende el cuerpo detrás del AppBar
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
-        backgroundColor: Colors.white.withOpacity(0.6), // Fondo blanco con opacidad
-        elevation: 0, // Remueve la sombra del AppBar
+        backgroundColor: Colors.white.withOpacity(0.6),
+        elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back), // Icono de flecha hacia atrás
+          icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.of(context).pop(); // Regresa a la pantalla anterior
+            Navigator.of(context).pop();
           },
         ),
         title: Text(
-          comarcaData["comarca"], // Nombre dinámico de la comarca
+          comarcaData["comarca"],
           style: TextStyle(
-            fontStyle: FontStyle.italic, // Texto en cursiva
-            fontWeight: FontWeight.bold, // Texto en negrita
+            fontStyle: FontStyle.italic,
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),
@@ -60,6 +61,34 @@ class InformacionComarca extends StatelessWidget {
           ],
         ),
       ),
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            IconButton(
+              icon: Icon(Icons.info), // Primer ícono
+              onPressed: () {
+                // Acciones para el primer ícono
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.cloud), // Segundo ícono para el tiempo
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => TiempoComarca(
+                      comarcaData: comarcaData,
+                      pantallaComarcas: 'NombreDeTuPantallaDeComarcas', // Reemplaza esto con el nombre apropiado
+                    ),
+                  ),
+                );
+              },
+            ),
+
+          ],
+        ),
+      ),
     );
   }
 }
+
