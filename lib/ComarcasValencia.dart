@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'ComarcaCard.dart';
 import 'comarques.dart';// Importa el archivo comarcas.dart
-
+import 'InformacionComarca.dart';
 
 void main() {
   runApp(MyTempApp());
@@ -30,21 +30,21 @@ class ComarcasValencia extends StatelessWidget {
     List<dynamic> comarcasDeValencia = provincies["provincies"][0]["comarques"];
 
     return Scaffold(
-      extendBodyBehindAppBar: true, // Extiende el cuerpo detrás del AppBar
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
-        backgroundColor: Colors.white.withOpacity(0.6), // Fondo blanco con opacidad
-        elevation: 0, // Remueve la sombra del AppBar
+        backgroundColor: Colors.white.withOpacity(0.6),
+        elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back), // Icono de flecha hacia atrás
+          icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.of(context).pop(); // Regresa a la pantalla anterior
+            Navigator.of(context).pop();
           },
         ),
         title: Text(
           "Comarques de Valencia",
           style: TextStyle(
-            fontStyle: FontStyle.italic, // Texto en cursiva
-            fontWeight: FontWeight.bold, // Texto en negrita
+            fontStyle: FontStyle.italic,
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),
@@ -52,13 +52,23 @@ class ComarcasValencia extends StatelessWidget {
         itemCount: comarcasDeValencia.length,
         itemBuilder: (context, index) {
           var comarca = comarcasDeValencia[index];
-          return ComarcaCard(
-            nombreComarca: comarca["comarca"],
-            imagenUrl: comarca["img"],
+          return GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => InformacionComarca(comarcaData: comarca),
+                ),
+              );
+            },
+            child: ComarcaCard(
+              nombreComarca: comarca["comarca"],
+              imagenUrl: comarca["img"],
+            ),
           );
         },
       ),
     );
   }
 }
+
 
