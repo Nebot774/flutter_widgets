@@ -46,7 +46,7 @@ class _LoginFormularioState extends State<LoginFormulario> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Image.asset('assets/logo.png'), // Imagen del logo
+            Image.asset('assets/logo_correcte.png'), // Imagen del logo
             SizedBox(height: 30), // Espacio entre el logo y el título
             Text(
               'Les comarques de la comunitat',

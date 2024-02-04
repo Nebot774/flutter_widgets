@@ -20,7 +20,10 @@ class TiempoComarca extends StatelessWidget {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            // Lógica para regresar a la pantalla de comarcas correspondiente
+            int count = 0;
+            Navigator.of(context).popUntil((route) {
+              return count++ == 2;
+            });
           },
         ),
         title: Text("Tiempo en ${comarcaData["comarca"]}"),
